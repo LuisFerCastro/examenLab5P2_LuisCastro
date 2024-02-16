@@ -6,12 +6,14 @@ package examenlab5p2_luiscastro;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
  * @author lfern
  */
 public class Civiles extends usuarios {
+    static Random rand = new Random();
     public ArrayList<Tramites> tramites = new ArrayList();
 
     public Civiles() {
@@ -38,7 +40,40 @@ public class Civiles extends usuarios {
 
     @Override
     public String generarID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String ID = "";
+        int municipio = 0;
+        if(departamento.equalsIgnoreCase("Francisco Morazan")){
+            ID += "01";
+            municipio = rand.nextInt(27)+1;
+            if(municipio < 10){
+                ID += "0"+municipio;
+            }else{
+                ID += municipio +"";  
+            }
+        }else if(departamento.equalsIgnoreCase("Cortes")){
+            ID += "02";
+            municipio = rand.nextInt(11)+1;
+            if(municipio < 10){
+                ID += "0"+municipio;
+            }else{
+                ID += municipio +"";  
+            }
+        }else{
+            ID += "03";
+            municipio = rand.nextInt(20)+1;
+            if(municipio < 10){
+                ID += "0"+municipio;
+            }else{
+              ID += municipio +"";  
+            }
+        }
+        int year = fecha_n.getYear()+1900;
+        ID += year+"";
+        for (int i = 0; i < 5; i++) {
+            int random = rand.nextInt(10);
+            ID += random +"";
+        }
+        return ID;
     }
     
 }

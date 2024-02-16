@@ -273,6 +273,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JFrameMain");
         setUndecorated(true);
 
         lb_InicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -390,13 +391,19 @@ public class Main extends javax.swing.JFrame {
             pf_contraIS.setText("");
             JOptionPane.showMessageDialog(this, "No se ha encontrado el usuario.");
         }
+        if(tf_nomIS.getText().equals("Juana Ernesto")&& pf_contraIS.getText().equals("juanaernesto123")){
+            this.setVisible(false);
+            JF_empleado.pack();
+            JF_empleado.setVisible(true);
+        }
     }//GEN-LAST:event_bttnEntrarMouseClicked
 
     private void bttnexitempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitempActionPerformed
         // TODO add your handling code here:
-        pn_emp.setVisible(false);
-        pn_login.setVisible(true);
-        
+        this.setVisible(true);
+        JF_empleado.setVisible(false);
+        tf_nomIS.setText("");
+        pf_contraIS.setText("");
     }//GEN-LAST:event_bttnexitempActionPerformed
 
     private void tf_apellidoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_apellidoModActionPerformed
