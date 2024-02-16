@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +20,16 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = new Date(2005, 2, 31);
+        Date fecha2 = new Date(1998, 8, 11);
+        usuarios.add(new Empleados("Juana", "Ernesto", "juanaernesto123", fecha,"F", "Cortes"));
+        usuarios.add(new Civiles("Diego", "Rosales", "drosales", fecha2, "M", "Comayagua"));
+        String id1 = usuarios.get(0).generarID();
+        String id2 = usuarios.get(1).generarID();
+        usuarios.get(0).setIdentidad(id1);
+        usuarios.get(1).setIdentidad(id2);
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -57,6 +68,25 @@ public class Main extends javax.swing.JFrame {
         tf_departamento = new javax.swing.JTextField();
         lb_fechaNac = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        JF_civil = new javax.swing.JFrame();
+        pn_civil = new javax.swing.JPanel();
+        label_Bienvenido = new javax.swing.JLabel();
+        bttnexitCivil = new javax.swing.JButton();
+        jtp_civil = new javax.swing.JTabbedPane();
+        pn_InPersonal = new javax.swing.JPanel();
+        label_IP = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_infopersonal = new javax.swing.JTable();
+        label_tramites = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_tramitespersonales = new javax.swing.JTable();
+        pn_GestionTramites = new javax.swing.JPanel();
+        label_DGT = new javax.swing.JLabel();
+        tF_nombreGT = new javax.swing.JTextField();
+        label_NGT = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tA_descripcion = new javax.swing.JTextArea();
+        bttnEnviarTramites = new javax.swing.JButton();
         pn_login = new javax.swing.JPanel();
         lb_InicioSesion = new javax.swing.JLabel();
         lb_nombreIS = new javax.swing.JLabel();
@@ -66,6 +96,8 @@ public class Main extends javax.swing.JFrame {
         pf_contraIS = new javax.swing.JPasswordField();
         pn_exit = new javax.swing.JPanel();
         lb_exit = new javax.swing.JLabel();
+
+        JF_empleado.setUndecorated(true);
 
         lb_BienvenidoEmp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_BienvenidoEmp.setText("Bienvenido!");
@@ -263,18 +295,188 @@ public class Main extends javax.swing.JFrame {
             JF_empleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JF_empleadoLayout.createSequentialGroup()
                 .addComponent(pn_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 41, Short.MAX_VALUE))
         );
         JF_empleadoLayout.setVerticalGroup(
             JF_empleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JF_empleadoLayout.createSequentialGroup()
                 .addComponent(pn_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 39, Short.MAX_VALUE))
+        );
+
+        JF_civil.setUndecorated(true);
+
+        label_Bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        label_Bienvenido.setText("Bienvenido!");
+
+        bttnexitCivil.setText("Cerrar Sesion");
+        bttnexitCivil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bttnexitCivilMouseClicked(evt);
+            }
+        });
+        bttnexitCivil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnexitCivilActionPerformed(evt);
+            }
+        });
+
+        label_IP.setText("Informacion Personal:");
+
+        jt_infopersonal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre Completo", "No. Identidad", "Fecha Nacimiento"
+            }
+        ));
+        jScrollPane3.setViewportView(jt_infopersonal);
+
+        label_tramites.setText("Tramites:");
+
+        jt_tramitespersonales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre Tramite", "Descripcion", "Fecha", "No. Identidad"
+            }
+        ));
+        jScrollPane4.setViewportView(jt_tramitespersonales);
+
+        javax.swing.GroupLayout pn_InPersonalLayout = new javax.swing.GroupLayout(pn_InPersonal);
+        pn_InPersonal.setLayout(pn_InPersonalLayout);
+        pn_InPersonalLayout.setHorizontalGroup(
+            pn_InPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_InPersonalLayout.createSequentialGroup()
+                .addGroup(pn_InPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_InPersonalLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(pn_InPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_IP, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_tramites, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pn_InPersonalLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(pn_InPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pn_InPersonalLayout.setVerticalGroup(
+            pn_InPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_InPersonalLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(label_IP)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_tramites)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jtp_civil.addTab("Informacion Personal", pn_InPersonal);
+
+        label_DGT.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        label_DGT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_DGT.setText("Descripcion:");
+
+        label_NGT.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        label_NGT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_NGT.setText("Nombre:");
+
+        tA_descripcion.setColumns(20);
+        tA_descripcion.setRows(5);
+        jScrollPane5.setViewportView(tA_descripcion);
+
+        bttnEnviarTramites.setText("Enviar");
+
+        javax.swing.GroupLayout pn_GestionTramitesLayout = new javax.swing.GroupLayout(pn_GestionTramites);
+        pn_GestionTramites.setLayout(pn_GestionTramitesLayout);
+        pn_GestionTramitesLayout.setHorizontalGroup(
+            pn_GestionTramitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_GestionTramitesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pn_GestionTramitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(tF_nombreGT))
+                .addGap(28, 28, 28))
+            .addGroup(pn_GestionTramitesLayout.createSequentialGroup()
+                .addGroup(pn_GestionTramitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_GestionTramitesLayout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(label_DGT, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_GestionTramitesLayout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(label_NGT, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_GestionTramitesLayout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(bttnEnviarTramites)))
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+        pn_GestionTramitesLayout.setVerticalGroup(
+            pn_GestionTramitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_GestionTramitesLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(label_NGT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tF_nombreGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(label_DGT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bttnEnviarTramites)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jtp_civil.addTab("Gestion de Tramites", pn_GestionTramites);
+
+        javax.swing.GroupLayout pn_civilLayout = new javax.swing.GroupLayout(pn_civil);
+        pn_civil.setLayout(pn_civilLayout);
+        pn_civilLayout.setHorizontalGroup(
+            pn_civilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_civilLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(label_Bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttnexitCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+            .addComponent(jtp_civil)
+        );
+        pn_civilLayout.setVerticalGroup(
+            pn_civilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_civilLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(pn_civilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bttnexitCivil, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(label_Bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtp_civil))
+        );
+
+        javax.swing.GroupLayout JF_civilLayout = new javax.swing.GroupLayout(JF_civil.getContentPane());
+        JF_civil.getContentPane().setLayout(JF_civilLayout);
+        JF_civilLayout.setHorizontalGroup(
+            JF_civilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pn_civil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_civilLayout.setVerticalGroup(
+            JF_civilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pn_civil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JFrameMain");
         setUndecorated(true);
+        setResizable(false);
 
         lb_InicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_InicioSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -394,14 +596,39 @@ public class Main extends javax.swing.JFrame {
         if(tf_nomIS.getText().equals("Juana Ernesto")&& pf_contraIS.getText().equals("juanaernesto123")){
             this.setVisible(false);
             JF_empleado.pack();
+            JF_empleado.setLocationRelativeTo(null);
             JF_empleado.setVisible(true);
+            DefaultTableModel modelo = (DefaultTableModel)jt_ice.getModel();
+            
+            
+            for (int i = 0; i< usuarios.size(); i++) {
+               
+                if(usuarios.get(i)instanceof Empleados){
+                    Object [] filas = {
+                        usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),
+                        usuarios.get(i).getIdentidad(),
+                        usuarios.get(i).getFecha_n()
+                            
+                    };
+                    modelo.addRow(filas);
+                }
+            }
+        }else if(tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
+            this.setVisible(false);
+            JF_civil.pack();
+            JF_civil.setLocationRelativeTo(null);
+            JF_civil.setVisible(true);
         }
+        
     }//GEN-LAST:event_bttnEntrarMouseClicked
-
+    public void llenarTabla1(){
+        
+    }
     private void bttnexitempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitempActionPerformed
         // TODO add your handling code here:
-        this.setVisible(true);
         JF_empleado.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
         tf_nomIS.setText("");
         pf_contraIS.setText("");
     }//GEN-LAST:event_bttnexitempActionPerformed
@@ -409,6 +636,19 @@ public class Main extends javax.swing.JFrame {
     private void tf_apellidoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_apellidoModActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_apellidoModActionPerformed
+
+    private void bttnexitCivilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnexitCivilMouseClicked
+        // TODO add your handling code here:
+        JF_civil.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        tf_nomIS.setText("");
+        pf_contraIS.setText("");
+    }//GEN-LAST:event_bttnexitCivilMouseClicked
+
+    private void bttnexitCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitCivilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnexitCivilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,16 +676,7 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        ArrayList<usuarios> usuarios = new ArrayList();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha = new Date(2005, 2, 31);
-        Date fecha2 = new Date(1998, 8, 11);
-        usuarios.add(new Empleados("Juana", "Ernesto", "juanaernesto123", fecha,"F", "Cortes"));
-        usuarios.add(new Civiles("Diego", "Rosales", "drosales", fecha2, "M", "Comayagua"));
-        String id1 = usuarios.get(0).generarID();
-        String id2 = usuarios.get(1).generarID();
-        usuarios.get(0).setIdentidad(id1);
-        usuarios.get(1).setIdentidad(id2);
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -455,16 +686,30 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame JF_civil;
     private javax.swing.JFrame JF_empleado;
     private javax.swing.JButton bttnEntrar;
+    private javax.swing.JButton bttnEnviarTramites;
+    private javax.swing.JButton bttnexitCivil;
     private javax.swing.JButton bttnexitemp;
     private javax.swing.JComboBox<String> cb_modificar;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jt_ice;
+    private javax.swing.JTable jt_infopersonal;
     private javax.swing.JTable jt_te;
+    private javax.swing.JTable jt_tramitespersonales;
+    private javax.swing.JTabbedPane jtp_civil;
+    private javax.swing.JLabel label_Bienvenido;
+    private javax.swing.JLabel label_DGT;
+    private javax.swing.JLabel label_IP;
+    private javax.swing.JLabel label_NGT;
+    private javax.swing.JLabel label_tramites;
     private javax.swing.JLabel lb_BienvenidoEmp;
     private javax.swing.JLabel lb_ICE;
     private javax.swing.JLabel lb_InicioSesion;
@@ -478,11 +723,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lb_nombreModificar;
     private javax.swing.JLabel lb_sexo;
     private javax.swing.JPasswordField pf_contraIS;
+    private javax.swing.JPanel pn_GestionTramites;
+    private javax.swing.JPanel pn_InPersonal;
     private javax.swing.JPanel pn_InformacionC;
     private javax.swing.JPanel pn_Modificar;
+    private javax.swing.JPanel pn_civil;
     private javax.swing.JPanel pn_emp;
     private javax.swing.JPanel pn_exit;
     private javax.swing.JPanel pn_login;
+    private javax.swing.JTextArea tA_descripcion;
+    private javax.swing.JTextField tF_nombreGT;
     private javax.swing.JTextField tf_apellidoMod;
     private javax.swing.JTextField tf_contraMod;
     private javax.swing.JTextField tf_departamento;
@@ -491,4 +741,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_sexo;
     private javax.swing.JTabbedPane tp_emp;
     // End of variables declaration//GEN-END:variables
+    public static ArrayList<usuarios>usuarios = new ArrayList();
 }
