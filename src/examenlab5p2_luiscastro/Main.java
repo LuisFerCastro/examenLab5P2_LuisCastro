@@ -31,7 +31,32 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
+        JF_empleado = new javax.swing.JFrame();
+        pn_emp = new javax.swing.JPanel();
+        lb_BienvenidoEmp = new javax.swing.JLabel();
+        bttnexitemp = new javax.swing.JButton();
+        tp_emp = new javax.swing.JTabbedPane();
+        pn_InformacionC = new javax.swing.JPanel();
+        lb_ICE = new javax.swing.JLabel();
+        lb_TE = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_ice = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_te = new javax.swing.JTable();
+        pn_Modificar = new javax.swing.JPanel();
+        cb_modificar = new javax.swing.JComboBox<>();
+        lb_nombreModificar = new javax.swing.JLabel();
+        tf_nomMod = new javax.swing.JTextField();
+        lb_sexo = new javax.swing.JLabel();
+        tf_sexo = new javax.swing.JTextField();
+        lb_apellido = new javax.swing.JLabel();
+        tf_apellidoMod = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        lb_contrasenia = new javax.swing.JLabel();
+        tf_contraMod = new javax.swing.JTextField();
+        tf_departamento = new javax.swing.JTextField();
+        lb_fechaNac = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         pn_login = new javax.swing.JPanel();
         lb_InicioSesion = new javax.swing.JLabel();
         lb_nombreIS = new javax.swing.JLabel();
@@ -42,15 +67,209 @@ public class Main extends javax.swing.JFrame {
         pn_exit = new javax.swing.JPanel();
         lb_exit = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+        lb_BienvenidoEmp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_BienvenidoEmp.setText("Bienvenido!");
+
+        bttnexitemp.setText("Cerrar Sesion");
+        bttnexitemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnexitempActionPerformed(evt);
+            }
+        });
+
+        lb_ICE.setText("Informacion Civiles:");
+
+        lb_TE.setText("Tramites:");
+
+        jt_ice.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "No. Identidad", "Fecha Nacimiento"
+            }
+        ));
+        jScrollPane1.setViewportView(jt_ice);
+
+        jt_te.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre Tramite", "Descripcion", "Fecha", "No. Identidad"
+            }
+        ));
+        jScrollPane2.setViewportView(jt_te);
+
+        javax.swing.GroupLayout pn_InformacionCLayout = new javax.swing.GroupLayout(pn_InformacionC);
+        pn_InformacionC.setLayout(pn_InformacionCLayout);
+        pn_InformacionCLayout.setHorizontalGroup(
+            pn_InformacionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_InformacionCLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(pn_InformacionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_ICE, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_TE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+        pn_InformacionCLayout.setVerticalGroup(
+            pn_InformacionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_InformacionCLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lb_ICE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(lb_TE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+        );
+
+        tp_emp.addTab("Informacion Civiles", pn_InformacionC);
+
+        cb_modificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lb_nombreModificar.setText("Nombre");
+
+        lb_sexo.setText("Sexo");
+
+        lb_apellido.setText("Apellido");
+
+        tf_apellidoMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_apellidoModActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Departamento");
+
+        lb_contrasenia.setText("Contrasenia");
+
+        lb_fechaNac.setText("Fecha de nacimiento");
+
+        javax.swing.GroupLayout pn_ModificarLayout = new javax.swing.GroupLayout(pn_Modificar);
+        pn_Modificar.setLayout(pn_ModificarLayout);
+        pn_ModificarLayout.setHorizontalGroup(
+            pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_ModificarLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(cb_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
+            .addGroup(pn_ModificarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_ModificarLayout.createSequentialGroup()
+                        .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lb_nombreModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_nomMod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_ModificarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                .addComponent(lb_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122))
+                            .addGroup(pn_ModificarLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(tf_apellidoMod)
+                                .addContainerGap())))
+                    .addGroup(pn_ModificarLayout.createSequentialGroup()
+                        .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_contraMod)
+                            .addComponent(lb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_sexo)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_departamento, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                        .addGap(64, 64, 64)
+                        .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        pn_ModificarLayout.setVerticalGroup(
+            pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_ModificarLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(cb_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_nombreModificar)
+                    .addComponent(lb_apellido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_nomMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_apellidoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_contrasenia)
+                    .addComponent(lb_fechaNac))
+                .addGroup(pn_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_ModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_contraMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lb_sexo)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_departamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_ModificarLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
+
+        tp_emp.addTab("Modificar Civiles", pn_Modificar);
+
+        javax.swing.GroupLayout pn_empLayout = new javax.swing.GroupLayout(pn_emp);
+        pn_emp.setLayout(pn_empLayout);
+        pn_empLayout.setHorizontalGroup(
+            pn_empLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_empLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pn_empLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_empLayout.createSequentialGroup()
+                        .addComponent(tp_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(55, Short.MAX_VALUE))
+                    .addGroup(pn_empLayout.createSequentialGroup()
+                        .addComponent(lb_BienvenidoEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttnexitemp, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71))))
+        );
+        pn_empLayout.setVerticalGroup(
+            pn_empLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_empLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pn_empLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_BienvenidoEmp)
+                    .addComponent(bttnexitemp))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tp_emp)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout JF_empleadoLayout = new javax.swing.GroupLayout(JF_empleado.getContentPane());
+        JF_empleado.getContentPane().setLayout(JF_empleadoLayout);
+        JF_empleadoLayout.setHorizontalGroup(
+            JF_empleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JF_empleadoLayout.createSequentialGroup()
+                .addComponent(pn_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        JF_empleadoLayout.setVerticalGroup(
+            JF_empleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JF_empleadoLayout.createSequentialGroup()
+                .addComponent(pn_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,7 +383,7 @@ public class Main extends javax.swing.JFrame {
 
     private void bttnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnEntrarMouseClicked
         // TODO add your handling code here:
-        if(tf_nomIS.getText().equals("Juan Ernesto")&& pf_contraIS.getText().equals("juanernesto123")||tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
+        if(tf_nomIS.getText().equals("Juana Ernesto")&& pf_contraIS.getText().equals("juanaernesto123")||tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
             JOptionPane.showMessageDialog(this, "Ha entrado exitosamente.");
         }else{
             tf_nomIS.setText("");
@@ -172,6 +391,17 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se ha encontrado el usuario.");
         }
     }//GEN-LAST:event_bttnEntrarMouseClicked
+
+    private void bttnexitempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitempActionPerformed
+        // TODO add your handling code here:
+        pn_emp.setVisible(false);
+        pn_login.setVisible(true);
+        
+    }//GEN-LAST:event_bttnexitempActionPerformed
+
+    private void tf_apellidoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_apellidoModActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_apellidoModActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,10 +431,14 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
         ArrayList<usuarios> usuarios = new ArrayList();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha = new Date(102, 2, 31);
-        Date fecha2 = new Date(98, 8, 11);
+        Date fecha = new Date(2005, 2, 31);
+        Date fecha2 = new Date(1998, 8, 11);
         usuarios.add(new Empleados("Juana", "Ernesto", "juanaernesto123", fecha,"F", "Cortes"));
         usuarios.add(new Civiles("Diego", "Rosales", "drosales", fecha2, "M", "Comayagua"));
+        String id1 = usuarios.get(0).generarID();
+        String id2 = usuarios.get(1).generarID();
+        usuarios.get(0).setIdentidad(id1);
+        usuarios.get(1).setIdentidad(id2);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -214,15 +448,40 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame JF_empleado;
     private javax.swing.JButton bttnEntrar;
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton bttnexitemp;
+    private javax.swing.JComboBox<String> cb_modificar;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jt_ice;
+    private javax.swing.JTable jt_te;
+    private javax.swing.JLabel lb_BienvenidoEmp;
+    private javax.swing.JLabel lb_ICE;
     private javax.swing.JLabel lb_InicioSesion;
+    private javax.swing.JLabel lb_TE;
+    private javax.swing.JLabel lb_apellido;
     private javax.swing.JLabel lb_contraIS;
+    private javax.swing.JLabel lb_contrasenia;
     private javax.swing.JLabel lb_exit;
+    private javax.swing.JLabel lb_fechaNac;
     private javax.swing.JLabel lb_nombreIS;
+    private javax.swing.JLabel lb_nombreModificar;
+    private javax.swing.JLabel lb_sexo;
     private javax.swing.JPasswordField pf_contraIS;
+    private javax.swing.JPanel pn_InformacionC;
+    private javax.swing.JPanel pn_Modificar;
+    private javax.swing.JPanel pn_emp;
     private javax.swing.JPanel pn_exit;
     private javax.swing.JPanel pn_login;
+    private javax.swing.JTextField tf_apellidoMod;
+    private javax.swing.JTextField tf_contraMod;
+    private javax.swing.JTextField tf_departamento;
     private javax.swing.JTextField tf_nomIS;
+    private javax.swing.JTextField tf_nomMod;
+    private javax.swing.JTextField tf_sexo;
+    private javax.swing.JTabbedPane tp_emp;
     // End of variables declaration//GEN-END:variables
 }

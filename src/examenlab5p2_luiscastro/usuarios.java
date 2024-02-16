@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author lfern
  */
-public class usuarios {
+public abstract class usuarios {
     String nombre;
     String apellido;
     String contra;
@@ -116,4 +116,5 @@ public class usuarios {
         return "Usuario{" +nombre + " "+ apellido + '}';
     }
     
+    public abstract String generarID();
 }

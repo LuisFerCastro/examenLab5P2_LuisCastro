@@ -25,9 +25,20 @@ public class Civiles extends usuarios {
         super(nombre, apellido, contra, fecha_n, sexo, departamento);
     }
 
+    
+
+    public Civiles(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento, String identidad) {
+        super(nombre, apellido, contra, fecha_n, sexo, departamento, identidad);
+    }
+
     @Override
     public String toString() {
         return "Civiles{" + "tramites=" + tramites + '}';
+    }
+
+    @Override
+    public String generarID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
