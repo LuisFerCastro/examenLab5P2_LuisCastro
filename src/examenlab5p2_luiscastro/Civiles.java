@@ -5,6 +5,7 @@
 package examenlab5p2_luiscastro;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -18,6 +19,10 @@ public class Civiles extends usuarios {
 
     public Civiles(String nombre, String apellido, String contra) {
         super(nombre, apellido, contra);
+    }
+
+    public Civiles(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento) {
+        super(nombre, apellido, contra, fecha_n, sexo, departamento);
     }
 
     @Override

@@ -18,9 +18,10 @@ public class Empleados extends usuarios{
     public Empleados() {
     }
 
-    public Empleados(String nombre, String apellido, String contra) {
-        super(nombre, apellido, contra);
+    public Empleados(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento) {
+        super(nombre, apellido, contra, fecha_n, sexo, departamento);
     }
+
     
     public Empleados(String carrera, String puestolaboral, String tiempo_trabajado, String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento, String identidad) {
         super(nombre, apellido, contra, fecha_n, sexo, departamento, identidad);

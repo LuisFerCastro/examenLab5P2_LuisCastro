@@ -27,6 +27,15 @@ public class usuarios {
         this.apellido = apellido;
         this.contra = contra;
     }
+
+    public usuarios(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.contra = contra;
+        this.fecha_n = fecha_n;
+        this.sexo = sexo;
+        this.departamento = departamento;
+    }
     
     public usuarios(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento, String identidad) {
         this.nombre = nombre;

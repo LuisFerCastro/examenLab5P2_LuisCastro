@@ -4,7 +4,9 @@
  */
 package examenlab5p2_luiscastro;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,6 +31,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
         pn_login = new javax.swing.JPanel();
         lb_InicioSesion = new javax.swing.JLabel();
         lb_nombreIS = new javax.swing.JLabel();
@@ -38,6 +41,17 @@ public class Main extends javax.swing.JFrame {
         pf_contraIS = new javax.swing.JPasswordField();
         pn_exit = new javax.swing.JPanel();
         lb_exit = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 598, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -186,8 +200,11 @@ public class Main extends javax.swing.JFrame {
         }
         //</editor-fold>
         ArrayList<usuarios> usuarios = new ArrayList();
-        usuarios.add(new Empleados("Juan", "Ernesto", "juanernesto123"));
-        usuarios.add(new Civiles("Diego", "Rosales", "drosales"));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = new Date(102, 2, 31);
+        Date fecha2 = new Date(98, 8, 11);
+        usuarios.add(new Empleados("Juana", "Ernesto", "juanaernesto123", fecha,"F", "Cortes"));
+        usuarios.add(new Civiles("Diego", "Rosales", "drosales", fecha2, "M", "Comayagua"));
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -198,6 +215,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnEntrar;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel lb_InicioSesion;
     private javax.swing.JLabel lb_contraIS;
     private javax.swing.JLabel lb_exit;
