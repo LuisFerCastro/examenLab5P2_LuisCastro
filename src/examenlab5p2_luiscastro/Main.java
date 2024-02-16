@@ -5,6 +5,7 @@
 package examenlab5p2_luiscastro;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,18 +30,103 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         pn_login = new javax.swing.JPanel();
+        lb_InicioSesion = new javax.swing.JLabel();
+        lb_nombreIS = new javax.swing.JLabel();
+        lb_contraIS = new javax.swing.JLabel();
+        bttnEntrar = new javax.swing.JButton();
+        tf_nomIS = new javax.swing.JTextField();
+        pf_contraIS = new javax.swing.JPasswordField();
+        pn_exit = new javax.swing.JPanel();
+        lb_exit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        lb_InicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_InicioSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_InicioSesion.setText("Inicio Sesion");
+
+        lb_nombreIS.setText("Nombre completo");
+
+        lb_contraIS.setText("Contraseña");
+
+        bttnEntrar.setText("Entrar");
+        bttnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bttnEntrarMouseClicked(evt);
+            }
+        });
+
+        pn_exit.setBackground(new java.awt.Color(255, 255, 255));
+        pn_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_exitMouseClicked(evt);
+            }
+        });
+
+        lb_exit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_exit.setForeground(new java.awt.Color(0, 0, 0));
+        lb_exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_exit.setText("X");
+
+        javax.swing.GroupLayout pn_exitLayout = new javax.swing.GroupLayout(pn_exit);
+        pn_exit.setLayout(pn_exitLayout);
+        pn_exitLayout.setHorizontalGroup(
+            pn_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_exitLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pn_exitLayout.setVerticalGroup(
+            pn_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_exitLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_exit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pn_loginLayout = new javax.swing.GroupLayout(pn_login);
         pn_login.setLayout(pn_loginLayout);
         pn_loginLayout.setHorizontalGroup(
             pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(pn_loginLayout.createSequentialGroup()
+                .addGroup(pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(pf_contraIS, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bttnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_loginLayout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(lb_InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pn_loginLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addGroup(pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lb_nombreIS, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lb_contraIS, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_nomIS, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(pn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         pn_loginLayout.setVerticalGroup(
             pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 353, Short.MAX_VALUE)
+            .addGroup(pn_loginLayout.createSequentialGroup()
+                .addGroup(pn_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_loginLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lb_InicioSesion))
+                    .addComponent(pn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(lb_nombreIS)
+                .addGap(18, 18, 18)
+                .addComponent(tf_nomIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(lb_contraIS)
+                .addGap(27, 27, 27)
+                .addComponent(pf_contraIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(bttnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -56,6 +142,22 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pn_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_exitMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_pn_exitMouseClicked
+
+    private void bttnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnEntrarMouseClicked
+        // TODO add your handling code here:
+        if(tf_nomIS.getText().equals("Juan Ernesto")&& pf_contraIS.getText().equals("juanernesto123")||tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
+            JOptionPane.showMessageDialog(this, "Ha entrado exitosamente.");
+        }else{
+            tf_nomIS.setText("");
+            pf_contraIS.setText("");
+            JOptionPane.showMessageDialog(this, "No se ha encontrado el usuario.");
+        }
+    }//GEN-LAST:event_bttnEntrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -95,6 +197,14 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttnEntrar;
+    private javax.swing.JLabel lb_InicioSesion;
+    private javax.swing.JLabel lb_contraIS;
+    private javax.swing.JLabel lb_exit;
+    private javax.swing.JLabel lb_nombreIS;
+    private javax.swing.JPasswordField pf_contraIS;
+    private javax.swing.JPanel pn_exit;
     private javax.swing.JPanel pn_login;
+    private javax.swing.JTextField tf_nomIS;
     // End of variables declaration//GEN-END:variables
 }
