@@ -65,7 +65,7 @@ public class Tramites {
 
     @Override
     public String toString() {
-        return "Tramites{" + nom_tram + ", descripcion=" + descripcion + ", fecha=" + fecha + ", identidad=" + identidad + '}';
+        return "Nombre: " + nom_tram + ", Descripcion: " +descripcion;
     }
     
 }

@@ -89,7 +89,7 @@ public class Empleados extends usuarios{
               ID += municipio +"";  
             }
         }
-        int year = fecha_n.getYear()+1900;
+        int year = fecha_n.getYear();
         ID += year+"";
         for (int i = 0; i < 5; i++) {
             int random = rand.nextInt(10);

@@ -74,8 +74,8 @@ public class Civiles extends usuarios {
               ID += municipio +"";  
             }
         }
-        int year = fecha_n.getYear()+1900;
-        ID += year+"";
+        int year = fecha_n.getYear();
+        ID += year+"-";
         for (int i = 0; i < 5; i++) {
             int random = rand.nextInt(10);
             ID += random +"";

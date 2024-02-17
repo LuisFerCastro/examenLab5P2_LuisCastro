@@ -7,6 +7,8 @@ package examenlab5p2_luiscastro;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -387,6 +389,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane5.setViewportView(tA_descripcion);
 
         bttnEnviarTramites.setText("Enviar");
+        bttnEnviarTramites.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bttnEnviarTramitesMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_GestionTramitesLayout = new javax.swing.GroupLayout(pn_GestionTramites);
         pn_GestionTramites.setLayout(pn_GestionTramitesLayout);
@@ -584,13 +591,15 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se ha encontrado el usuario.");
         }
         if(tf_nomIS.getText().equals(usuarios.get(0).getNombre()+" "+usuarios.get(0).getApellido())&& pf_contraIS.getText().equals(usuarios.get(0).getContra())){
+            
             this.setVisible(false);
             JF_empleado.pack();
             JF_empleado.setLocationRelativeTo(null);
             JF_empleado.setVisible(true);
             DefaultTableModel modelo = (DefaultTableModel)jt_ice.getModel();
+            modelo.setRowCount(0);
             DefaultTableModel modelo1 = (DefaultTableModel)jt_te.getModel();
-            
+            modelo1.setRowCount(0);
             for (int i = 0; i< usuarios.size(); i++) {
                
                 if(usuarios.get(i)instanceof Civiles){
@@ -611,12 +620,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }else if(tf_nomIS.getText().equals(usuarios.get(1).getNombre()+" "+usuarios.get(1).getApellido())&& pf_contraIS.getText().equals(usuarios.get(1).getContra())){
+            for(int i = 0; i < usuarios.size();i++){
+                if((usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido()).equals(tf_nomIS.getText())){
+                    index = usuarios.indexOf(usuarios.get(i));
+                }
+            }
             this.setVisible(false);
             String name = tf_nomIS.getText();
             JF_civil.pack();
             JF_civil.setLocationRelativeTo(null);
             JF_civil.setVisible(true);
             DefaultTableModel modelo = (DefaultTableModel) jt_infopersonal.getModel();
+            modelo.setColumnCount(0);
+            DefaultTableModel modelo1 = (DefaultTableModel) jt_tramitespersonales.getModel();
+            modelo1.setColumnCount(0);
+            
             for(int i = 0; i < usuarios.size();i++){
                 if(usuarios.get(i)instanceof Civiles && (usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido()).equals(name)){
                     Object [] filas = {
@@ -624,7 +642,15 @@ public class Main extends javax.swing.JFrame {
                         usuarios.get(i).getIdentidad(),
                         usuarios.get(i).getFecha_n()
                     };
-                    modelo.addRow(filas);
+                    modelo.addRow(filas);    
+                }
+                if(usuarios.get(i)instanceof Civiles && (usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido()).equals(name)){
+                    for(int j = 0; j < ((Civiles)usuarios.get(i)).tramites.size();j++){
+                        Object [] filasT = {
+                            ((Civiles)usuarios.get(i)).tramites.get(j)
+                        };
+                        modelo1.addRow(filasT);
+                    }
                 }
             }
         }
@@ -656,6 +682,16 @@ public class Main extends javax.swing.JFrame {
     private void bttnexitCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitCivilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bttnexitCivilActionPerformed
+
+    private void bttnEnviarTramitesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnEnviarTramitesMouseClicked
+        // TODO add your handling code here:
+        String nombre = tF_nombreGT.getText();
+        String descripcion = tA_descripcion.getText();
+        String identidad = usuarios.get(index).getIdentidad();
+        Date fecha = new Date();
+       
+        ((Civiles)usuarios.get(index)).tramites.add(new Tramites(nombre, descripcion, fecha, identidad));
+    }//GEN-LAST:event_bttnEnviarTramitesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -749,4 +785,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tp_emp;
     // End of variables declaration//GEN-END:variables
     public static ArrayList<usuarios>usuarios = new ArrayList();
+    public static int index = 0;
 }
