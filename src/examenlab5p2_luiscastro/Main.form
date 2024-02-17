@@ -373,6 +373,7 @@
                         <Property name="text" type="java.lang.String" value="Modificar"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bttnmodMouseClicked"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnmodActionPerformed"/>
                       </Events>
                     </Component>

@@ -7,6 +7,8 @@ package examenlab5p2_luiscastro;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -187,6 +189,11 @@ public class Main extends javax.swing.JFrame {
         lb_fechaNac.setText("Fecha de nacimiento");
 
         bttnmod.setText("Modificar");
+        bttnmod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bttnmodMouseClicked(evt);
+            }
+        });
         bttnmod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnmodActionPerformed(evt);
@@ -613,6 +620,12 @@ public class Main extends javax.swing.JFrame {
             cb_dep.addItem("Francisco Morazan");
             cb_dep.addItem("Cortes");
             cb_dep.addItem("Comayagua");
+            tf_contraMod.setText("drosales");
+            tf_nomMod.setText("Diego");
+            tf_apellidoMod.setText("Rosales");
+            cb_sexo.setSelectedItem("Masculino");
+            cb_dep.setSelectedItem("Comayagua");
+            
             this.setVisible(false);
             JF_empleado.pack();
             JF_empleado.setLocationRelativeTo(null);
@@ -723,6 +736,16 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
      
     }//GEN-LAST:event_cb_modificarItemStateChanged
+
+    private void bttnmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnmodMouseClicked
+        // TODO add your handling code here:
+        usuarios.get(1).setNombre(tf_nomMod.getText());
+        usuarios.get(1).setApellido(tf_apellidoMod.getText());
+        usuarios.get(1).setContra(tf_contraMod.getText());
+        usuarios.get(1).setDepartamento(cb_dep.getSelectedItem().toString());
+        usuarios.get(1).setSexo(cb_sexo.getSelectedItem().toString());
+        usuarios.get(1).setFecha_n(jCalendar1.getDate());
+    }//GEN-LAST:event_bttnmodMouseClicked
 
     /**
      * @param args the command line arguments
