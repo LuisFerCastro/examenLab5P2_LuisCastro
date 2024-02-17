@@ -27,12 +27,19 @@ public class Civiles extends usuarios {
         super(nombre, apellido, contra, fecha_n, sexo, departamento);
     }
 
-    
-
     public Civiles(String nombre, String apellido, String contra, Date fecha_n, String sexo, String departamento, String identidad) {
         super(nombre, apellido, contra, fecha_n, sexo, departamento, identidad);
     }
 
+    public ArrayList<Tramites> getTramites() {
+        return tramites;
+    }
+
+    public void setTramites(ArrayList<Tramites> tramites) {
+        this.tramites = tramites;
+    }
+    
+    
     @Override
     public String toString() {
         return "Civiles{" + "tramites=" + tramites + '}';

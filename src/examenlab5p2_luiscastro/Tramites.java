@@ -19,6 +19,11 @@ public class Tramites {
     public Tramites() {
     }
 
+    public Tramites(String nom_tram, String descripcion) {
+        this.nom_tram = nom_tram;
+        this.descripcion = descripcion;
+    }
+    
     public Tramites(String nom_tram, String descripcion, Date fecha, String identidad) {
         this.nom_tram = nom_tram;
         this.descripcion = descripcion;

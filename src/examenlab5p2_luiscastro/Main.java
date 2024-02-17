@@ -115,9 +115,7 @@ public class Main extends javax.swing.JFrame {
 
         jt_ice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "No. Identidad", "Fecha Nacimiento"
@@ -127,10 +125,7 @@ public class Main extends javax.swing.JFrame {
 
         jt_te.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nombre Tramite", "Descripcion", "Fecha", "No. Identidad"
@@ -325,9 +320,7 @@ public class Main extends javax.swing.JFrame {
 
         jt_infopersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre Completo", "No. Identidad", "Fecha Nacimiento"
@@ -339,10 +332,7 @@ public class Main extends javax.swing.JFrame {
 
         jt_tramitespersonales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nombre Tramite", "Descripcion", "Fecha", "No. Identidad"
@@ -586,24 +576,24 @@ public class Main extends javax.swing.JFrame {
 
     private void bttnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnEntrarMouseClicked
         // TODO add your handling code here:
-        if(tf_nomIS.getText().equals("Juana Ernesto")&& pf_contraIS.getText().equals("juanaernesto123")||tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
+        if(tf_nomIS.getText().equals(usuarios.get(0).getNombre()+" "+usuarios.get(0).getApellido())&& pf_contraIS.getText().equals(usuarios.get(0).getContra())||tf_nomIS.getText().equals(usuarios.get(1).getNombre()+" "+usuarios.get(1).getApellido())&& pf_contraIS.getText().equals(usuarios.get(1).getContra())){
             JOptionPane.showMessageDialog(this, "Ha entrado exitosamente.");
         }else{
             tf_nomIS.setText("");
             pf_contraIS.setText("");
             JOptionPane.showMessageDialog(this, "No se ha encontrado el usuario.");
         }
-        if(tf_nomIS.getText().equals("Juana Ernesto")&& pf_contraIS.getText().equals("juanaernesto123")){
+        if(tf_nomIS.getText().equals(usuarios.get(0).getNombre()+" "+usuarios.get(0).getApellido())&& pf_contraIS.getText().equals(usuarios.get(0).getContra())){
             this.setVisible(false);
             JF_empleado.pack();
             JF_empleado.setLocationRelativeTo(null);
             JF_empleado.setVisible(true);
             DefaultTableModel modelo = (DefaultTableModel)jt_ice.getModel();
-            
+            DefaultTableModel modelo1 = (DefaultTableModel)jt_te.getModel();
             
             for (int i = 0; i< usuarios.size(); i++) {
                
-                if(usuarios.get(i)instanceof Empleados){
+                if(usuarios.get(i)instanceof Civiles){
                     Object [] filas = {
                         usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),
                         usuarios.get(i).getIdentidad(),
@@ -611,19 +601,36 @@ public class Main extends javax.swing.JFrame {
                             
                     };
                     modelo.addRow(filas);
+                    for(int j = 0; j < ((Civiles)usuarios.get(i)).tramites.size();j++){
+                        Object [] filasT = {
+                        ((Civiles)usuarios.get(j)).getTramites()
+                        };
+                        modelo1.addRow(filasT);
+                    }
+                    
                 }
             }
-        }else if(tf_nomIS.getText().equals("Diego Rosales")&& pf_contraIS.getText().equals("drosales")){
+        }else if(tf_nomIS.getText().equals(usuarios.get(1).getNombre()+" "+usuarios.get(1).getApellido())&& pf_contraIS.getText().equals(usuarios.get(1).getContra())){
             this.setVisible(false);
+            String name = tf_nomIS.getText();
             JF_civil.pack();
             JF_civil.setLocationRelativeTo(null);
             JF_civil.setVisible(true);
+            DefaultTableModel modelo = (DefaultTableModel) jt_infopersonal.getModel();
+            for(int i = 0; i < usuarios.size();i++){
+                if(usuarios.get(i)instanceof Civiles && (usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido()).equals(name)){
+                    Object [] filas = {
+                        usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),
+                        usuarios.get(i).getIdentidad(),
+                        usuarios.get(i).getFecha_n()
+                    };
+                    modelo.addRow(filas);
+                }
+            }
         }
         
     }//GEN-LAST:event_bttnEntrarMouseClicked
-    public void llenarTabla1(){
-        
-    }
+    
     private void bttnexitempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnexitempActionPerformed
         // TODO add your handling code here:
         JF_empleado.setVisible(false);
