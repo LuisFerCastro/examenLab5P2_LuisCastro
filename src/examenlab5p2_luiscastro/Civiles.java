@@ -75,7 +75,7 @@ public class Civiles extends usuarios {
             }
         }
         int year = fecha_n.getYear();
-        ID += year+"-";
+        ID += year+"";
         for (int i = 0; i < 5; i++) {
             int random = rand.nextInt(10);
             ID += random +"";
